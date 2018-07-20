@@ -18,12 +18,13 @@ public class GiftModel {
     private String giftName;
     private String personName;
     @TypeConverters(DateConverter.class)
-    private Date borrowDate;
+    private Date giftDate;
 
-    public GiftModel(String giftName, String personName, Date borrowDate) {
+    public GiftModel(int id, String giftName, String personName, Date giftDate) {
+        this.id = id;
         this.giftName = giftName;
         this.personName = personName;
-        this.borrowDate = borrowDate;
+        this.giftDate = giftDate;
     }
 
     public String getGiftName() {
@@ -34,7 +35,7 @@ public class GiftModel {
         return personName;
     }
 
-    public Date getBorrowDate() {
-        return borrowDate;
+    public Date getGiftDate() {
+        return giftDate;
     }
 }

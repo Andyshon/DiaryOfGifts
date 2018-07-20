@@ -22,7 +22,7 @@ public class GiftListViewModel extends AndroidViewModel {
 
         appDatabase = AppDatabase.getDatabase(this.getApplication());
 
-        itemAndPersonList = appDatabase.itemAndPersonModel().getAllBorrowedItems();
+        itemAndPersonList = appDatabase.giftAndPersonModel().getAllGifts();
     }
 
 
@@ -44,7 +44,7 @@ public class GiftListViewModel extends AndroidViewModel {
 
         @Override
         protected Void doInBackground(final GiftModel... params) {
-            db.itemAndPersonModel().deleteBorrow(params[0]);
+            db.giftAndPersonModel().deleteGift(params[0]);
             return null;
         }
 

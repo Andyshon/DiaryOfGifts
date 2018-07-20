@@ -16,10 +16,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private List<GiftModel> giftModelList;
     private View.OnLongClickListener longClickListener;
+    private View.OnClickListener clickListener;
 
-    public RecyclerViewAdapter(List<GiftModel> giftModelList, View.OnLongClickListener longClickListener) {
+    public RecyclerViewAdapter(List<GiftModel> giftModelList, View.OnLongClickListener longClickListener, View.OnClickListener clickListener) {
         this.giftModelList = giftModelList;
         this.longClickListener = longClickListener;
+        this.clickListener = clickListener;
     }
 
     @Override
@@ -33,9 +35,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         GiftModel giftModel = giftModelList.get(position);
         holder.itemTextView.setText(giftModel.getGiftName());
         holder.nameTextView.setText(giftModel.getPersonName());
-        holder.dateTextView.setText(giftModel.getBorrowDate().toLocaleString().substring(0, 11));
+        holder.dateTextView.setText(giftModel.getGiftDate().toLocaleString().substring(0, 15));
         holder.itemView.setTag(giftModel);
         holder.itemView.setOnLongClickListener(longClickListener);
+        holder.itemView.setOnClickListener(clickListener);
     }
 
     @Override

@@ -2,25 +2,31 @@ package com.andyshon.diaryofgifts;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
+
 
 /**
  * Created by andyshon on 18.07.18.
  */
 
 
-public class AddGiftViewModel extends AndroidViewModel {
+public class AddGetGiftViewModel extends AndroidViewModel {
 
     private AppDatabase appDatabase;
 
-    public AddGiftViewModel(Application application) {
+    public AddGetGiftViewModel(Application application) {
         super(application);
 
         appDatabase = AppDatabase.getDatabase(this.getApplication());
-
     }
 
-    public void addBorrow(final GiftModel giftModel) {
+    public LiveData<GiftModel> getGiftAndPersonById(String id) {
+        return appDatabase.giftAndPersonModel().getGiftById(id);
+    }
+
+
+    public void addGift(final GiftModel giftModel) {
         new addAsyncTask(appDatabase).execute(giftModel);
     }
 
@@ -34,7 +40,7 @@ public class AddGiftViewModel extends AndroidViewModel {
 
         @Override
         protected Void doInBackground(final GiftModel... params) {
-            db.itemAndPersonModel().addBorrow(params[0]);
+            db.giftAndPersonModel().addGift(params[0]);
             return null;
         }
 

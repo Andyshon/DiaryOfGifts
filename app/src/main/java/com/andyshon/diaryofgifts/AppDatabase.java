@@ -21,6 +21,6 @@ public abstract class AppDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    public abstract GiftModelDao itemAndPersonModel();
+    public abstract GiftModelDao giftAndPersonModel();
 
 }

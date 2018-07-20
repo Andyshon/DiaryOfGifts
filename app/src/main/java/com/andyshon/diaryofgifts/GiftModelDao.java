@@ -20,15 +20,15 @@ import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 public interface GiftModelDao {
 
     @Query("select * from GiftModel")
-    LiveData<List<GiftModel>> getAllBorrowedItems();
+    LiveData<List<GiftModel>> getAllGifts();
 
     @Query("select * from GiftModel where id = :id")
-    GiftModel getItembyId(String id);
+    LiveData<GiftModel> getGiftById(String id);
 
     @Insert(onConflict = REPLACE)
-    void addBorrow(GiftModel giftModel);
+    void addGift(GiftModel giftModel);
 
     @Delete
-    void deleteBorrow(GiftModel giftModel);
+    void deleteGift(GiftModel giftModel);
 
 }
